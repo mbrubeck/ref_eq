@@ -21,6 +21,8 @@
 //! assert!(!ref_eq(&x, &y));
 //! ```
 
+#![no_std]
+
 /// Determine if two borrowed pointers point to the same thing.
 #[inline]
 pub fn ref_eq<'a, 'b, T>(thing: &'a T, other: &'b T) -> bool {
