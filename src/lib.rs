@@ -26,3 +26,20 @@
 pub fn ref_eq<'a, 'b, T>(thing: &'a T, other: &'b T) -> bool {
     (thing as *const T) == (other as *const T)
 }
+
+#[test]
+pub fn test_references() {
+    let x = 0;
+    let y = 0;
+
+    let p = &x;
+    let q = &y;
+
+    assert!(ref_eq(p, p));
+    assert!(ref_eq(p, &x));
+    assert!(ref_eq(&x, p));
+    assert!(ref_eq(&x, &x));
+
+    assert!(!ref_eq(&x, &y));
+    assert!(!ref_eq(p, q));
+}
